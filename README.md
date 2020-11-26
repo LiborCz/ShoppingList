@@ -2,9 +2,6 @@
 
 > Shopping list app built with the MERN stack along with Redux for state management, Reactstrap and react-transition-group.
 
-## Quick Start
-
-Add your MONGO_URI to the default.json file. Make sure you set an env var for that and the jwtSecret on deployment
 
 ```bash
 # Install dependencies for server
@@ -32,9 +29,6 @@ There is a Heroku post build script so that you do not have to compile your Reac
 ## App Info
 
 ### Author
-
-Brad Traversy
-[Traversy Media](http://www.traversymedia.com)
 
 ### Version
 
