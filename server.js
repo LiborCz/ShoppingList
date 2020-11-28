@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 
 const path = require('path');
 const cors = require('cors');
-const morgan = require('morgan');
 const config = require('./config');
 
 // routes
@@ -16,8 +15,7 @@ const app = express();
 
 // CORS Middleware
 app.use(cors());
-// Logger Middleware
-app.use(morgan('dev'));
+
 // Bodyparser Middleware
 app.use(bodyParser.json());
 
