@@ -1,8 +1,9 @@
-const express = require('express');
-const router = express.Router();
+import { Router } from 'express';
+import auth from '../../middleware/auth';
+// Item Model
+import Item from '../../models/Item';
 
-//Item model
-const Item = require('../../models/Item');
+const router = Router();
 
 /**
  * @route   GET api/items
@@ -27,7 +28,7 @@ router.get('/', async (req, res) => {
  * @access  Private
  */
 
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
   const newItem = new Item({
     name: req.body.name
   });
@@ -48,7 +49,7 @@ router.post('/', async (req, res) => {
  * @access  Private
  */
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
   try {
     const item = await Item.findById(req.params.id);
     if (!item) throw Error('No item found');
@@ -63,5 +64,4 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-
-module.exports = router;
+export default router;
