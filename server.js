@@ -14,7 +14,7 @@ const itemRoutes = require('./routes/api/items');
 const app = express();
 
 // CORS Middleware
-// app.use(cors());
+app.use(cors());
 
 // Bodyparser Middleware
 app.use(bodyParser.json());
@@ -40,21 +40,21 @@ app.use('/api/items', itemRoutes);
 // app.use('/api/users', userRoutes);
 // app.use('/api/auth', authRoutes);
 
-// --> Add this
-// ** MIDDLEWARE ** //
-const whitelist = ['http://localhost:3000', 'http://localhost:5000', 'https://liborcz-shoppinglist.herokuapp.com']
-const corsOptions = {
-  origin: function (origin, callback) {
-    console.log("** Origin of request " + origin)
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      console.log("Origin acceptable")
-      callback(null, true)
-    } else {
-      console.log("Origin rejected")
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
+// // --> Add this
+// // ** MIDDLEWARE ** //
+// const whitelist = ['http://localhost:3000', 'http://localhost:5000', 'https://liborcz-shoppinglist.herokuapp.com']
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     console.log("** Origin of request " + origin)
+//     if (whitelist.indexOf(origin) !== -1 || !origin) {
+//       console.log("Origin acceptable")
+//       callback(null, true)
+//     } else {
+//       console.log("Origin rejected")
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   }
+// }
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
