@@ -14,7 +14,7 @@ const itemRoutes = require('./routes/api/items');
 const app = express();
 
 // CORS Middleware
-app.use(cors());
+// app.use(cors());
 
 // Bodyparser Middleware
 app.use(bodyParser.json());
@@ -42,7 +42,7 @@ app.use('/api/items', itemRoutes);
 
 // --> Add this
 // ** MIDDLEWARE ** //
-const whitelist = ['http://localhost:3000', 'http://localhost:5000', 'https://liborcz-lostandfound.herokuapp.com']
+const whitelist = ['http://localhost:3000', 'http://localhost:5000', 'https://liborcz-shoppinglist.herokuapp.com']
 const corsOptions = {
   origin: function (origin, callback) {
     console.log("** Origin of request " + origin)
@@ -65,7 +65,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
 }
-else {
-  const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
-}
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
